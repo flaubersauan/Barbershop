@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - TechWorld</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+<body>
+
+    <header>
+        <div class="container_logo">
+            <i class="fa-solid fa-scissors"></i>
+        </div>
+    </header>
+    <main>
+        <div class="text_container">
+            <h1>Bem vindo à Romerito Barbershop</h1>
+            <p>
+                É um prazer ter você aqui.
+                Nosso sistema foi pensado para oferecer praticidade e rapidez na hora de marcar seu atendimento. 
+                Para começar, basta criar uma conta ou fazer login, caso você já seja cadastrado.
+                Após entrar na sua área de cliente, você poderá:
+                Visualizar horários disponíveis,
+                Escolher o melhor momento para você,
+                Agendar seu atendimento rapidamente, sem complicações.
+                Tudo de forma simples, segura e organizada. Estamos prontos para oferecer a melhor experiência para você.
+                Aproveite e agende já seu horário!
+            </p>
+            <div class="botoes">
+                <button class="cadastro">
+                    <a href="{{url_for('cadastro')}}">Cadastre-se</a>
+                </button>
+                <button class="login">
+                    <a href="{{url_for('login')}}">Login</a>
+                </button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -6,4 +6,4 @@ Session = session(bind=engine)
 
 class Base(DeclarativeBase):
     pass
-    
+
