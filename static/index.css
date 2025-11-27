@@ -17,7 +17,8 @@ body {
 header {
     display: flex;
     align-items: center;
-    padding: 50px ;
+    padding-top: 9em ;
+    padding-left: 7em;
     height: 10vh;
 }
 
@@ -97,7 +98,7 @@ main {
 
 .botoes .cadastro:hover {
     transform: scale(1.05);
-    background-color: goldenrod;
+    background-color: #B87333;
     
 }
 
@@ -117,7 +118,3 @@ main {
     justify-content: center;
 }
 
-i{
-    color: white;
-    font-size: 50px;
-}

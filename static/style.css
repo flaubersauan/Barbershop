@@ -43,10 +43,15 @@ main {
     align-items: center;
     justify-content: center;
 }
-i{
-    color: white;
-    font-size: 25px;
+.usuario-info a{
+    text-decoration: none;
 }
+.fa.fa-sign-out{
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+}
+
 .btn-sair{
     height: 50px;
     width: 50px;
@@ -55,4 +60,9 @@ i{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.titulo{
+    display:flex;
+    gap: 30px;
+    align-items: center;
 }
