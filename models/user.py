@@ -2,7 +2,6 @@ from sqlalchemy import String, Integer
 from sqlalchemy.orm import mapped_column, relationship, backref
 from flask_login import UserMixin
 from database.conexao import Base
-from models.agendamento import Agendamento
 
 class User(UserMixin, Base):
     __tablename__ = "users"
@@ -12,7 +11,9 @@ class User(UserMixin, Base):
     email = mapped_column(String(120), nullable=False, unique=True)
     senha_hash = mapped_column(String(200), nullable=False)
 
-
-    agendamentos = relationship("Agendamento", backref=backref("cliente"))
-
-    
+    agendamento = relationship(
+        "Agendamento",
+        backref=backref("cliente"),
+        uselist=False,
+        lazy="joined"
+    )

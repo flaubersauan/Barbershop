@@ -42,12 +42,13 @@ main {
     gap: 30px;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 .usuario-info a{
     text-decoration: none;
 }
 .fa.fa-sign-out{
-    font-size: 30px;
+    font-size: 20px;
     text-decoration: none;
     color: white;
 }
@@ -65,4 +66,119 @@ main {
     display:flex;
     gap: 30px;
     align-items: center;
+}
+.container-user{
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fa-regular.fa-user{
+    font-size: 20px;
+}
+.dashboard-main {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    padding: 20px;
+}
+
+.titulo-horarios {
+    font-size: 28px;
+    color: #4A3728;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.lista-horarios {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+}
+
+.item-horario {
+    padding: 20px;
+    background-color: white;
+    border-radius: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s;
+    border: 2px solid transparent;
+}
+
+.item-horario:hover {
+    border-color: #6B4F3A;
+}
+
+.item-horario span {
+    font-size: 18px;
+    font-weight: 600;
+    color: #4A3728;
+}
+
+.btn-agendar {
+    padding: 10px 18px;
+    border-radius: 10px;
+    background-color: #6B4F3A;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.btn-agendar:hover {
+    background-color: #4A3728;
+}
+
+.nao-ha-horarios {
+    font-size: 18px;
+    color: #6B4F3A;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+.btn-horario-ocupado, .btn-seu-horario {
+    padding: 8px 15px;
+    border-radius: 8px;
+    color: white;
+    background-color: #8c6f5a;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-seu-horario {
+    background-color: #4A3728; /* marrom escuro */
+}
+
+.btn-agendar {
+    background-color: #6B4F3A;
+    padding: 8px 15px;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.badge {
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+.badge-indisponivel {
+    background: #b84c4c;
+    color: white;
+}
+
+.badge-meu {
+    background: #3e8e41;
+    color: white;
+}
+.badge-indisponivel p, .badge-meu p {
+    color: white;
 }

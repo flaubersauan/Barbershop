@@ -4,13 +4,42 @@ from database.conexao import Session
 from werkzeug.security import generate_password_hash, check_password_hash
 from models.user import User
 from models.horario import Horario
-
+from models.agendamento import Agendamento
+from datetime import date, time
+from flask_login import current_user
+from sqlalchemy.orm import joinedload
 
 app = Flask(__name__)
 
 login_manager = LoginManager(app)
 
 app.secret_key = 'SAUANOFODÃO'
+
+session = Session()
+
+# Horários fixos
+horas = [
+    time(8, 0),
+    time(9, 0),
+    time(10, 0),
+    time(11, 0),
+    time(13, 0),
+    time(14, 0),
+    time(15, 0),
+    time(16, 0),
+    time(17, 0),
+]
+
+hoje = date.today()
+
+for h in horas:
+    existe = session.query(Horario).filter_by(data=hoje, hora=h).first()
+    if not existe:
+        session.add(Horario(data=hoje, hora=h))
+
+session.commit()
+session.close()
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -71,13 +100,54 @@ def login():
 
 
 
-
-@app.route('/dashboard', methods=['POST', 'GET'])
+@app.route('/dashboard')
+@login_required
 def dashboard():
-    if request.method == 'GET':
-        return render_template('dashboard.html')
-    return render_template('dashboard.html')
+    db = Session()
 
+    # Carrega todos os horários e também o agendamento
+    horarios = (
+        db.query(Horario).options(joinedload(Horario.agendamento)).order_by(Horario.hora.asc()).all())
+    db.close()
+
+    return render_template("dashboard.html",usuario=current_user.nome,horarios=horarios)
+
+
+@app.route("/agendar/<int:horario_id>")
+@login_required
+def agendar(horario_id):
+    db = Session()
+
+    horario = db.get(Horario, horario_id)
+    if not horario or not horario.disponivel:
+        flash("Horário indisponível!")
+        db.close()
+        return redirect(url_for("dashboard"))
+
+    # Verifica se o usuário já tem agendamento
+    if current_user.agendamento:
+        flash("Você já possui um horário agendado!")
+        db.close()
+        return redirect(url_for("dashboard"))
+
+    # Verifica se o horário já está agendado
+    if horario.agendamento:
+        flash("Este horário já foi reservado!")
+        db.close()
+        return redirect(url_for("dashboard"))
+
+    # Cria o agendamento
+    novo = Agendamento(
+        user_id=current_user.id,horario_id=horario.id)
+
+    horario.disponivel = False
+
+    db.add(novo)
+    db.commit()
+    db.close()
+
+    flash("Agendamento realizado com sucesso!")
+    return redirect(url_for("dashboard"))
 
 @app.route('/logout')   
 @login_required

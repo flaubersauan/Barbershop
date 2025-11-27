@@ -118,3 +118,7 @@ main {
     justify-content: center;
 }
 
+.fa-solid.fa-scissors{
+    color: white;
+    font-size: 32px;
+}

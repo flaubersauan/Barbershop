@@ -1,1 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+
+<h2 class="titulo-horarios">Horários do Dia</h2>
+
+<ul class="lista-horarios">
+    {% for h in horarios %}
+        <li class="item-horario">
+
+            <span class="texto-horario">
+                {{ h.data.strftime('%d/%m/%Y') }} — {{ h.hora.strftime('%H:%M') }}
+            </span>
+
+            {% if h.agendamento %}
+                {% if h.agendamento.user_id == current_user.id %}
+                    <span class="badge badge-meu"><p>Seu horário</p></span>
+                {% else %}
+                    <span class="badge badge-indisponivel"><p>Agendado</p></span>
+                {% endif %}
+            {% else %}
+                {% if h.disponivel %}
+                    <a class="btn-agendar" href="{{ url_for('agendar', horario_id=h.id) }}">
+                        Agendar
+                    </a>
+                {% else %}
+                    <span class="badge badge-indisponivel">Indisponível</span>
+                {% endif %}
+            {% endif %}
+
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
