@@ -17,11 +17,16 @@ body {
 header {
     display: flex;
     align-items: center;
-    padding-top: 9em ;
+    padding-top: 1em ;
     padding-left: 7em;
-    height: 10vh;
+    height: auto;
 }
 
+header img{
+    height: 200px;
+    width: 200px;
+    border-radius: 40px;
+}
 
 main {
     flex: 1;

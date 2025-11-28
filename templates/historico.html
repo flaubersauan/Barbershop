@@ -1,0 +1,17 @@
+{% extends 'base_dashboard.html' %}
+{% block content %}
+<h2>Histórico</h2>
+
+{% if historico %}
+  <ul class="lista-historico">
+    {% for ag in historico %}
+      <li>
+        {{ ag.horario.data.strftime('%d/%m/%Y') }} às {{ ag.horario.hora.strftime('%H:%M') }}
+        — <strong>{{ ag.status if ag.status is defined else 'ativo' }}</strong>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Sem histórico de agendamentos.</p>
+{% endif %}
+{% endblock %}

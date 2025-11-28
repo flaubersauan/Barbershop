@@ -156,4 +156,62 @@ def logout():
     flash('Logout realizado com sucesso!')
     return redirect(url_for('index'))
 
+@app.route("/perfil")
+@login_required
+def perfil():
+    db = Session()
 
+    agendamento = (
+        db.query(Agendamento).filter_by(user_id=current_user.id).join(Horario).first())
+
+    db.close()
+
+    return render_template("perfil.html", usuario=current_user, agendamento=agendamento)
+
+@app.route("/cancelar_agendamento")
+@login_required
+def cancelar_agendamento():
+    db = Session()
+
+    agendamento = db.query(Agendamento).filter_by(user_id=current_user.id).first()
+
+    if not agendamento:
+        flash("Você não possui agendamento para cancelar.")
+        db.close()
+        return redirect(url_for("dashboard"))
+
+    horario = agendamento.horario
+    horario.disponivel = True
+
+    agendamento.status = "cancelado"
+    horario.disponivel = True
+    db.commit()
+    db.close()
+
+    flash("Agendamento cancelado com sucesso!")
+    return redirect(url_for("dashboard"))
+
+@app.route("/historico")
+@login_required
+def historico():
+    db = Session()
+    
+    historico = (
+        db.query(Agendamento)
+        .filter_by(user_id=current_user.id)
+        .join(Horario)
+        .order_by(Agendamento.criado_em.desc())
+        .all()
+    )
+
+    db.close()
+
+    return render_template("historico.html", historico=historico)
+
+@app.route('/meu_agendamento')
+@login_required
+def meu_agendamento():
+    db = Session()
+    agendamento = db.query(Agendamento).filter_by(user_id=current_user.id).join(Horario).first()
+    db.close()
+    return render_template('meu_agendamento.html', agendamento=agendamento, usuario=current_user)
