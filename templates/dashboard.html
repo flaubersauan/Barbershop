@@ -1,13 +1,15 @@
 {% extends 'base_dashboard.html' %}
 
 {% block content %}
+
 <header>
     <h2 class="titulo-horarios">Horários do Dia</h2>
 </header>
 
 <main>
+
     <ul class="lista-horarios">
-    {% for h in horarios %}
+        {% for h in horarios %}
         <li class="item-horario">
 
             <span class="texto-horario">
@@ -31,30 +33,33 @@
             {% endif %}
 
         </li>
-    {% endfor %}
-</ul>
-    <div class="nav-dashboard">
-    <a href="{{ url_for('dashboard') }}" class="nav-item">
-        <i class="fa-solid fa-clock"></i>
-        Horários
-    </a>
+        {% endfor %}
+    </ul>
 
-    <a href="{{ url_for('perfil') }}" class="nav-item">
-        <i class="fa-solid fa-user"></i>
-        Meu Perfil
-    </a>
+    
+    <nav class="nav-dashboard">
 
-    <a href="{{ url_for('meu_agendamento') }}" class="nav-item">
-        <i class="fa-solid fa-calendar-check"></i>
-        Meu Agendamento
-    </a>
+        <a href="{{ url_for('dashboard') }}" class="nav-item">
+            <i class="fa-solid fa-clock"></i>
+            Horários
+        </a>
 
-    <a href="{{ url_for('historico') }}" class="nav-item">
-        <i class="fa-solid fa-list"></i>
-        Histórico
-    </a>
-</div>
+        <a href="{{ url_for('perfil') }}" class="nav-item">
+            <i class="fa-solid fa-user"></i>
+            Meu Perfil
+        </a>
 
+        <a href="{{ url_for('meu_agendamento') }}" class="nav-item">
+            <i class="fa-solid fa-calendar-check"></i>
+            Meu Agendamento
+        </a>
+
+        <a href="{{ url_for('historico') }}" class="nav-item">
+            <i class="fa-solid fa-list"></i>
+            Histórico
+        </a>
+
+    </nav>
 
 </main>
 

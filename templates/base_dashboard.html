@@ -21,7 +21,7 @@
             <i class="fa-regular fa-user"></i>
         </div>
 
-        <span>Olá, <strong>{{ usuario }}</strong></span>
+        <span>Olá, <strong>{{ current_user.nome }}</strong></span>
 
         <a href="{{ url_for('logout') }}" class="btn-sair">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
