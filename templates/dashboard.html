@@ -2,25 +2,36 @@
 
 {% block content %}
 
-<header>
-    <h2 class="titulo-horarios">Horários do Dia</h2>
+<header class="header-dashboard">
+    <div class="dashboard-title-box">
+        <h2>Horários do dia</h2>
+        <p class="data-atual">{{ horarios[0].data.strftime('%d/%m/%Y') }}</p>
+    </div>
+
+    <div class="user-dashboard-info">
+        <span>Olá, {{ usuario }}</span>
+        <a href="{{ url_for('logout') }}" class="btn-sair-dashboard">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
+    </div>
 </header>
 
-<main>
+
+<main class="dashboard-container">
 
     <ul class="lista-horarios">
         {% for h in horarios %}
         <li class="item-horario">
 
             <span class="texto-horario">
-                {{ h.data.strftime('%d/%m/%Y') }} — {{ h.hora.strftime('%H:%M') }}
+                {{ h.hora.strftime('%H:%M') }}
             </span>
 
             {% if h.agendamento %}
                 {% if h.agendamento.user_id == current_user.id %}
-                    <span class="badge badge-meu"><p>Seu horário</p></span>
+                    <span class="badge badge-meu">Seu horário</span>
                 {% else %}
-                    <span class="badge badge-indisponivel"><p>Agendado</p></span>
+                    <span class="badge badge-indisponivel">Agendado</span>
                 {% endif %}
             {% else %}
                 {% if h.disponivel %}
@@ -36,9 +47,8 @@
         {% endfor %}
     </ul>
 
-    
-    <nav class="nav-dashboard">
 
+    <nav class="nav-dashboard">
         <a href="{{ url_for('dashboard') }}" class="nav-item">
             <i class="fa-solid fa-clock"></i>
             Horários
@@ -58,7 +68,6 @@
             <i class="fa-solid fa-list"></i>
             Histórico
         </a>
-
     </nav>
 
 </main>

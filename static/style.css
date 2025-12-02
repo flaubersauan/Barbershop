@@ -1,184 +1,290 @@
+/* ...existing code... */
+
 @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;600&family=Poppins:wght@300;400;600&display=swap');
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
+html, body {
+    height: 100%;
     font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #F3EDE3;
-    padding: 30px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(180deg, #F3EDE3 0%, #EFE7DD 100%);
+    color: #3d352e;
+    padding: 28px;
 }
 
-header {
+/* Header */
+.header-dashboard {
+    max-width: 1100px;
+    margin: 0 auto 28px;
     display: flex;
     align-items: center;
-    padding: 50px ;
-    height: 10vh;
-    background-color: #6B4F3A;
-    border-radius: 30px;
     justify-content: space-between;
+    padding: 22px 28px;
+    background: linear-gradient(135deg, #6B4F3A 0%, #4A3728 100%);
+    color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(74,55,40,0.18);
 }
 
-header h1{
-    color: white;
-}
-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-}
-
-.usuario-info{
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-.usuario-info a{
-    text-decoration: none;
-}
-.fa.fa-sign-out{
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
-}
-
-.btn-sair{
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    background-color: #4A3728;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 .titulo{
-    display:flex;
-    gap: 30px;
-    align-items: center;
+    color: #4A3728;
 }
-.container-user{
-    border-radius: 100%;
+.dashboard-body{
     display: flex;
+    gap: 50px;
+    flex-direction: column;
+}
+
+/* Title */
+.dashboard-title-box h2 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    margin-bottom: 6px;
+}
+.data-atual {
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+}
+
+/* User area */
+.user-dashboard-info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    font-weight: 600;
+    font-size: 15px;
+}
+.btn-sair-dashboard {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    color: #fff;
+    text-decoration: none;
+    transition: transform .15s ease, background .15s ease;
 }
-.fa-regular.fa-user{
-    font-size: 20px;
+.btn-sair-dashboard:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.12);
 }
-.dashboard-main {
+
+/* Main container */
+.dashboard-container {
+    max-width: 1100px;
+    margin: 0 auto 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
     width: 100%;
-    max-width: 900px;
-    margin: 40px auto 0 auto;
-    padding: 20px;
 }
 
-.titulo-horarios {
-    font-size: 28px;
-    color: #4A3728;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
+/* Horários list */
 .lista-horarios {
     list-style: none;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     padding: 0;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(1, 1fr);
 }
 
 .item-horario {
-    padding: 20px;
-    background-color: white;
-    border-radius: 18px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 18px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    transition: 0.2s;
-    border: 2px solid transparent;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: 0 6px 20px rgba(74,55,40,0.06);
+    border: 1px solid rgba(74,55,40,0.04);
+    transition: transform .12s ease, box-shadow .12s ease;
 }
-
 .item-horario:hover {
-    border-color: #6B4F3A;
+    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(74,55,40,0.12);
 }
 
-.item-horario span {
-    font-size: 18px;
-    font-weight: 600;
+/* Left side text */
+.texto-horario {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
     color: #4A3728;
-}
-
-.btn-agendar {
-    padding: 10px 18px;
-    border-radius: 10px;
-    background-color: #6B4F3A;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    transition: 0.2s;
-}
-
-.btn-agendar:hover {
-    background-color: #4A3728;
-}
-
-.nao-ha-horarios {
     font-size: 18px;
-    color: #6B4F3A;
-    margin-top: 20px;
-    text-align: center;
-    font-weight: 600;
-}
-.btn-horario-ocupado, .btn-seu-horario {
-    padding: 8px 15px;
-    border-radius: 8px;
-    color: white;
-    background-color: #8c6f5a;
-    opacity: 0.7;
-    cursor: not-allowed;
 }
 
-.btn-seu-horario {
-    background-color: #4A3728; /* marrom escuro */
-}
-
-.btn-agendar {
-    background-color: #6B4F3A;
-    padding: 8px 15px;
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-}
-
-.badge {
-    padding: 8px 14px;
+/* Time bubble */
+.time-bubble {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
     border-radius: 12px;
-    font-size: 15px;
+    background: linear-gradient(180deg, rgba(106,80,62,0.06), rgba(106,80,62,0.02));
+    color: #6B4F3A;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: inset 0 -6px 12px rgba(74,55,40,0.02);
 }
 
+/* Actions group on right */
+.item-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Primary button */
+.btn-agendar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 14px;
+    background: #6B4F3A;
+    color: #ffffff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background .12s ease, transform .12s ease;
+}
+.btn-agendar:hover {
+    background: #4A3728;
+    transform: translateY(-2px);
+}
+
+/* Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 13px;
+    min-width: 92px;
+    text-align: center;
+    color: #ffffff;
+}
 .badge-indisponivel {
     background: #b84c4c;
-    color: white;
 }
-
 .badge-meu {
     background: #3e8e41;
-    color: white;
 }
-.badge-indisponivel p, .badge-meu p {
+
+/* Disabled-like styles */
+.btn-horario-ocupado,
+.btn-seu-horario {
+    opacity: 0.85;
+    cursor: default;
+    background: #8c6f5a;
+    color: #fff;
+}
+
+/* Empty state */
+.nao-ha-horarios {
+    text-align: center;
+    color: #6B4F3A;
+    font-weight: 700;
+    padding: 26px;
+    border-radius: 12px;
+    background: rgba(106,80,62,0.06);
+}
+
+/* Bottom floating navigation */
+.nav-dashboard {
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+    display: flex;
+    gap: 12px;
+    background: rgba(255,255,255,0.78);
+    padding: 10px;
+    border-radius: 14px;
+}
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    color: #4A3728;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: background .12s ease, transform .12s ease;
+}
+.nav-item:hover {
+    background: rgba(106,80,62,0.06);
+    transform: translateY(-4px);
+}
+
+/* Título das páginas */
+.titulo-pagina {
+    font-size: 28px;
+    color: #4A3728;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Card central */
+.card-info {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.12);
+    max-width: 550px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #4A3728;
+    border: 2px solid #E8DCCD;
+}
+
+/* Texto vazio */
+.texto-vazio {
+    color: #6B4F3A;
+    text-align: center;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+/* Botão cancelar */
+.btn-cancelar {
+    display: inline-block;
+    padding: 12px 18px;
+    margin-top: 10px;
+    text-align: center;
+    background: #b84c4c;
     color: white;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.btn-cancelar:hover {
+    background: #a23f3f;
+}
+.container_card_info{
+    max-width: 600px;
+    padding: 40px;
+    background-color: #3d352e;
+    border-radius: 30px;
 }

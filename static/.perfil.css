@@ -1,0 +1,51 @@
+/* Título das páginas */
+.titulo-pagina {
+    font-size: 28px;
+    color: #4A3728;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Card central */
+.card-info {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.12);
+    max-width: 550px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #4A3728;
+    border: 2px solid #E8DCCD;
+}
+
+/* Texto vazio */
+.texto-vazio {
+    color: #6B4F3A;
+    text-align: center;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+/* Botão cancelar */
+.btn-cancelar {
+    display: inline-block;
+    padding: 12px 18px;
+    margin-top: 10px;
+    text-align: center;
+    background: #b84c4c;
+    color: white;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.btn-cancelar:hover {
+    background: #a23f3f;
+}

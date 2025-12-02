@@ -1,15 +1,25 @@
 {% extends 'base_dashboard.html' %}
 {% block content %}
-<h2>Meu Agendamento</h2>
+
+<h2 class="titulo-pagina">Meu Agendamento</h2>
 
 {% if agendamento %}
-  <div class="box-info">
-    <p><strong>Data:</strong> {{ agendamento.horario.data.strftime('%d/%m/%Y') }}</p>
-    <p><strong>Hora:</strong> {{ agendamento.horario.hora.strftime('%H:%M') }}</p>
-    <p><strong>Marcado em:</strong> {{ agendamento.criado_em.strftime('%d/%m/%Y %H:%M') }}</p>
-    <a class="btn-cancelar" href="{{ url_for('cancelar_agendamento') }}">Cancelar agendamento</a>
-  </div>
+    <div class="card-info">
+
+        <p><strong>Data:</strong> {{ agendamento.horario.data.strftime('%d/%m/%Y') }}</p>
+        <p><strong>Hora:</strong> {{ agendamento.horario.hora.strftime('%H:%M') }}</p>
+        <p><strong>Marcado em:</strong> {{ agendamento.criado_em.strftime('%d/%m/%Y %H:%M') }}</p>
+
+        <a class="btn-cancelar" href="{{ url_for('cancelar_agendamento') }}">
+            Cancelar agendamento
+        </a>
+
+    </div>
+
 {% else %}
-  <p>Você não tem agendamentos ativos.</p>
+
+    <p class="texto-vazio">Você não possui agendamentos ativos.</p>
+
 {% endif %}
+
 {% endblock %}
