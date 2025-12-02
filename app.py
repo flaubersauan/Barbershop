@@ -105,9 +105,7 @@ def login():
 def dashboard():
     db = Session()
 
-    # Carrega todos os horários e também o agendamento
-    horarios = (
-        db.query(Horario).options(joinedload(Horario.agendamento)).order_by(Horario.hora.asc()).all())
+    horarios = (db.query(Horario).options(joinedload(Horario.agendamento)).order_by(Horario.hora.asc()).all())
     db.close()
 
     return render_template("dashboard.html",usuario=current_user.nome,horarios=horarios)
@@ -124,21 +122,18 @@ def agendar(horario_id):
         db.close()
         return redirect(url_for("dashboard"))
 
-    # Verifica se o usuário já tem agendamento
     if current_user.agendamento:
         flash("Você já possui um horário agendado!")
         db.close()
         return redirect(url_for("dashboard"))
 
-    # Verifica se o horário já está agendado
+
     if horario.agendamento:
         flash("Este horário já foi reservado!")
         db.close()
         return redirect(url_for("dashboard"))
 
-    # Cria o agendamento
-    novo = Agendamento(
-        user_id=current_user.id,horario_id=horario.id)
+    novo = Agendamento(user_id=current_user.id,horario_id=horario.id)
 
     horario.disponivel = False
 
@@ -161,20 +156,11 @@ def logout():
 def perfil():
     db = Session()
 
-    agendamento = (
-        db.query(Agendamento)
-        .options(joinedload(Agendamento.horario))  
-        .filter_by(user_id=current_user.id)
-        .first()
-    )
+    agendamento = (db.query(Agendamento).options(joinedload(Agendamento.horario))  .filter_by(user_id=current_user.id).first())
 
     db.close()
 
-    return render_template(
-        "perfil.html",
-        usuario=current_user,
-        agendamento=agendamento
-    )
+    return render_template("perfil.html",usuario=current_user,agendamento=agendamento)
 
 
 @app.route("/cancelar_agendamento")
@@ -182,12 +168,7 @@ def perfil():
 def cancelar_agendamento():
     db = Session()
 
-    agendamento = (
-        db.query(Agendamento)
-        .options(joinedload(Agendamento.horario))
-        .filter_by(user_id=current_user.id)
-        .first()
-    )
+    agendamento = (db.query(Agendamento).options(joinedload(Agendamento.horario)).filter_by(user_id=current_user.id).first())
 
     if not agendamento:
         flash("Você não possui agendamento para cancelar.")
@@ -211,38 +192,19 @@ def cancelar_agendamento():
 def historico():
     db = Session()
 
-    historico = (
-        db.query(Agendamento)
-        .options(joinedload(Agendamento.horario))  
-        .filter_by(user_id=current_user.id)
-        .order_by(Agendamento.criado_em.desc())
-        .all()
-    )
+    historico = (db.query(Agendamento).options(joinedload(Agendamento.horario))  .filter_by(user_id=current_user.id).order_by(Agendamento.criado_em.desc()).all())
 
     db.close()
 
-    return render_template(
-        "historico.html",
-        historico=historico,
-        usuario=current_user
-    )
+    return render_template("historico.html",historico=historico,usuario=current_user)
 
 @app.route('/meu_agendamento')
 @login_required
 def meu_agendamento():
     db = Session()
 
-    agendamento = (
-        db.query(Agendamento)
-        .options(joinedload(Agendamento.horario))  
-        .filter_by(user_id=current_user.id)
-        .first()
-    )
+    agendamento = (db.query(Agendamento).options(joinedload(Agendamento.horario)).filter_by(user_id=current_user.id).first())
 
     db.close()
 
-    return render_template(
-        'meu_agendamento.html',
-        agendamento=agendamento,
-        usuario=current_user
-    )
+    return render_template('meu_agendamento.html',agendamento=agendamento,usuario=current_user)

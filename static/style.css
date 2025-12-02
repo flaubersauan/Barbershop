@@ -1,4 +1,4 @@
-/* ...existing code... */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;600&family=Poppins:wght@300;400;600&display=swap');
 
@@ -18,7 +18,7 @@ html, body {
     padding: 28px;
 }
 
-/* Header */
+
 .header-dashboard {
     max-width: 1100px;
     margin: 0 auto 28px;
@@ -41,7 +41,7 @@ html, body {
     flex-direction: column;
 }
 
-/* Title */
+
 .dashboard-title-box h2 {
     font-size: 20px;
     font-weight: 600;
@@ -53,7 +53,7 @@ html, body {
     color: rgba(255,255,255,0.9);
 }
 
-/* User area */
+
 .user-dashboard-info {
     display: flex;
     gap: 12px;
@@ -78,7 +78,7 @@ html, body {
     background: rgba(255,255,255,0.12);
 }
 
-/* Main container */
+
 .dashboard-container {
     max-width: 1100px;
     margin: 0 auto 88px;
@@ -88,7 +88,7 @@ html, body {
     width: 100%;
 }
 
-/* Horários list */
+
 .lista-horarios {
     list-style: none;
     padding: 0;
@@ -114,7 +114,7 @@ html, body {
     box-shadow: 0 14px 36px rgba(74,55,40,0.12);
 }
 
-/* Left side text */
+
 .texto-horario {
     display: flex;
     align-items: center;
@@ -124,7 +124,7 @@ html, body {
     font-size: 18px;
 }
 
-/* Time bubble */
+
 .time-bubble {
     display: inline-flex;
     align-items: center;
@@ -139,14 +139,14 @@ html, body {
     box-shadow: inset 0 -6px 12px rgba(74,55,40,0.02);
 }
 
-/* Actions group on right */
+
 .item-actions {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-/* Primary button */
+
 .btn-agendar {
     display: inline-flex;
     align-items: center;
@@ -165,7 +165,7 @@ html, body {
     transform: translateY(-2px);
 }
 
-/* Badges */
+
 .badge {
     display: inline-flex;
     align-items: center;
@@ -185,7 +185,7 @@ html, body {
     background: #3e8e41;
 }
 
-/* Disabled-like styles */
+
 .btn-horario-ocupado,
 .btn-seu-horario {
     opacity: 0.85;
@@ -194,7 +194,6 @@ html, body {
     color: #fff;
 }
 
-/* Empty state */
 .nao-ha-horarios {
     text-align: center;
     color: #6B4F3A;
@@ -204,7 +203,6 @@ html, body {
     background: rgba(106,80,62,0.06);
 }
 
-/* Bottom floating navigation */
 .nav-dashboard {
     position: fixed;
     right: 28px;
@@ -231,7 +229,6 @@ html, body {
     transform: translateY(-4px);
 }
 
-/* Título das páginas */
 .titulo-pagina {
     font-size: 28px;
     color: #4A3728;
@@ -241,7 +238,6 @@ html, body {
     letter-spacing: 1px;
 }
 
-/* Card central */
 .card-info {
     background: #fff;
     padding: 30px;
@@ -257,7 +253,6 @@ html, body {
     border: 2px solid #E8DCCD;
 }
 
-/* Texto vazio */
 .texto-vazio {
     color: #6B4F3A;
     text-align: center;
@@ -265,7 +260,6 @@ html, body {
     opacity: 0.8;
 }
 
-/* Botão cancelar */
 .btn-cancelar {
     display: inline-block;
     padding: 12px 18px;
