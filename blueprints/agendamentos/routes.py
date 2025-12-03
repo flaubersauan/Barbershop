@@ -1,8 +1,9 @@
 from flask import render_template, redirect, url_for, flash
 from flask_login import current_user, login_required
 from database.conexao import Session
-from models.agendamento import Agendamento
+from models import Agendamento
 from sqlalchemy.orm import joinedload
+
 from . import agendamento_bp
 @agendamento_bp.route("/perfil")
 @login_required

@@ -1,17 +1,23 @@
 from flask import Flask, render_template
 from flask_login import login_required,LoginManager
 from database.conexao import Session
-from models.user import User
-from models.horario import Horario
+from models import User, Horario        
 from datetime import date, time
 from flask_login import current_user
 from sqlalchemy.orm import joinedload
+from blueprints.auth.routes import auth_bp
+from blueprints.agendamentos.routes import agendamento_bp
+from blueprints.horarios.routes import horario_bp
 
 app = Flask(__name__)
 
 login_manager = LoginManager(app)
 
 app.secret_key = 'SAUANOFODÃO'
+
+app.register_blueprint(auth_bp)
+app.register_blueprint(agendamento_bp)
+app.register_blueprint(horario_bp)
 
 session = Session()
 
@@ -62,3 +68,5 @@ def dashboard():
 
     return render_template("dashboard.html",usuario=current_user.nome,horarios=horarios)
 
+if __name__ == '__main__':
+    app.run(debug=True)

@@ -10,7 +10,7 @@
 
     <div class="user-dashboard-info">
         <span>Olá, {{ usuario }}</span>
-        <a href="{{ url_for('logout') }}" class="btn-sair-dashboard">
+        <a href="{{ url_for('auth.logout') }}" class="btn-sair-dashboard">
             <i class="fa-solid fa-right-from-bracket"></i>
         </a>
     </div>
@@ -64,7 +64,7 @@
             Meu Agendamento
         </a>
 
-        <a href="{{ url_for('horario.historico') }}" class="nav-item">
+        <a href="{{ url_for('agendamento.historico') }}" class="nav-item">
             <i class="fa-solid fa-list"></i>
             Histórico
         </a>

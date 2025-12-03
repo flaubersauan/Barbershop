@@ -1,8 +1,8 @@
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from database import Session
-from models.user import User
+from database.conexao import Session
+from models import User
 from . import auth_bp
 
 @auth_bp.route('/cadastro', methods=['GET', 'POST'])
@@ -16,7 +16,7 @@ def cadastro():
         if db.query(User).filter_by(email=email).first():
             flash('E-mail já cadastrado!')
             db.close()
-            return redirect(url_for('cadastro'))
+            return redirect(url_for('auth.cadastro'))
 
         hashed = generate_password_hash(senha)
         novo_user = User(nome=nome, email=email, senha_hash=hashed)
@@ -24,7 +24,7 @@ def cadastro():
         db.commit()
         db.close()
         flash('Usuário cadastrado com sucesso!')
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
 
     return render_template('cadastro.html')
 
@@ -41,7 +41,7 @@ def login():
         if not user or not check_password_hash(user.senha_hash, senha):
             flash('E-mail ou senha inválidos.')
             db.close()
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
 
         login_user(user)
         db.close()

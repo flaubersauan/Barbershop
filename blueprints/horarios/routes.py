@@ -1,7 +1,6 @@
 from flask_login import login_required, current_user
 from database.conexao import Session
-from models.horario import Horario
-from models.agendamento import Agendamento
+from models import Agendamento, Horario
 from flask import redirect, flash, url_for
 from . import horario_bp
 
