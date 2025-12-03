@@ -35,7 +35,7 @@
                 {% endif %}
             {% else %}
                 {% if h.disponivel %}
-                    <a class="btn-agendar" href="{{ url_for('agendar', horario_id=h.id) }}">
+                    <a class="btn-agendar" href="{{ url_for('horario.agendar', horario_id=h.id) }}">
                         Agendar
                     </a>
                 {% else %}
@@ -54,17 +54,17 @@
             Horários
         </a>
 
-        <a href="{{ url_for('perfil') }}" class="nav-item">
+        <a href="{{ url_for('agendamento.perfil') }}" class="nav-item">
             <i class="fa-solid fa-user"></i>
             Meu Perfil
         </a>
 
-        <a href="{{ url_for('meu_agendamento') }}" class="nav-item">
+        <a href="{{ url_for('agendamento.meu_agendamento') }}" class="nav-item">
             <i class="fa-solid fa-calendar-check"></i>
             Meu Agendamento
         </a>
 
-        <a href="{{ url_for('historico') }}" class="nav-item">
+        <a href="{{ url_for('horario.historico') }}" class="nav-item">
             <i class="fa-solid fa-list"></i>
             Histórico
         </a>

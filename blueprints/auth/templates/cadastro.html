@@ -14,7 +14,7 @@
     </header>
 
     <main>
-        <form action="{{ url_for('cadastro') }}" method="POST">
+        <form action="{{ url_for('auth.cadastro') }}" method="POST">
 
             
             <div class="email">
@@ -32,7 +32,7 @@
                 <input type="password" name="senha" placeholder="Senha" required>
             </div>
             <button type="submit">Cadastrar</button>
-            <a style=" color: rgb(90, 45, 45);"" href="{{url_for('login')}}">Já tem uma conta? Entre aqui</a>             
+            <a style=" color: rgb(90, 45, 45);"" href="{{url_for('auth.login')}}">Já tem uma conta? Entre aqui</a>             
         </form>
     </main>
 </body>

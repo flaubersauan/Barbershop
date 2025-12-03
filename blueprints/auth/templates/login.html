@@ -16,7 +16,7 @@
     </header>
 
     <main>
-        <form action="{{ url_for('login') }}" method="POST">
+        <form action="{{ url_for('auth.login') }}" method="POST">
             
             <div class="email">
                 <i class="fa-regular fa-user"></i>
@@ -28,7 +28,7 @@
                 <input type="password" name="senha" placeholder="Senha" required>
             </div>
             <button type="submit">Entrar</button>
-            <a style="color: rgb(90, 45, 45);"  href="{{url_for('cadastro')}}">Não tem uma conta? Registre-se aqui</a>             
+            <a style="color: rgb(90, 45, 45);"  href="{{url_for('auth.cadastro')}}">Não tem uma conta? Registre-se aqui</a>             
         </form>
     </main>
 </body>
