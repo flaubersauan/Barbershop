@@ -63,10 +63,26 @@ def index():
 def dashboard():
     db = Session()
 
-    horarios = (db.query(Horario).options(joinedload(Horario.agendamento)).order_by(Horario.hora.asc()).all())
+    # carrega todos os horários + todos os agendamentos vinculados
+    horarios = (
+        db.query(Horario)
+        .options(joinedload(Horario.agendamento))
+        .order_by(Horario.hora.asc())
+        .all()
+    )
+
+    # agora escolher apenas o agendamento ATIVO
+    for h in horarios:
+        ativo = None
+        for ag in h.agendamento:
+            if ag.status == "ativo":
+                ativo = ag
+                break
+        h.agendamento_ativo = ativo   # campo virtual para o template usar
+
     db.close()
 
-    return render_template("dashboard.html",usuario=current_user.nome,horarios=horarios)
+    return render_template("dashboard.html", usuario=current_user.nome, horarios=horarios)
 
 if __name__ == '__main__':
     app.run(debug=True)

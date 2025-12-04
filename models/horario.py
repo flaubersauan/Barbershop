@@ -10,4 +10,4 @@ class Horario(Base):
     hora = mapped_column(Time, nullable=False)
     disponivel = mapped_column(Boolean, default=True)
 
-    agendamento = relationship("Agendamento",backref=backref("horario"),uselist=False)
+    agendamento = relationship("Agendamento",backref=backref("horario"))

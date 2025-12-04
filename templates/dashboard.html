@@ -27,8 +27,8 @@
                 {{ h.hora.strftime('%H:%M') }}
             </span>
 
-            {% if h.agendamento %}
-                {% if h.agendamento.user_id == current_user.id %}
+            {% if h.agendamento_ativo %}
+                {% if h.agendamento_ativo.user_id == current_user.id %}
                     <span class="badge badge-meu">Seu horário</span>
                 {% else %}
                     <span class="badge badge-indisponivel">Agendado</span>

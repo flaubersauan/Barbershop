@@ -21,10 +21,11 @@ def agendar(horario_id):
         return redirect(url_for("dashboard"))
 
 
-    if horario.agendamento:
-        flash("Este horário já foi reservado!")
-        db.close()
-        return redirect(url_for("dashboard"))
+    for ag in horario.agendamento:
+        if ag.status == "ativo":
+            flash("Este horário já foi reservado!")
+            db.close()
+            return redirect(url_for("dashboard"))
 
     novo = Agendamento(user_id=current_user.id,horario_id=horario.id)
 

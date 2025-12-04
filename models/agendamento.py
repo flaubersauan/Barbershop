@@ -7,7 +7,7 @@ class Agendamento(Base):
     __tablename__ = "agendamentos"
 
     id = mapped_column(Integer, primary_key=True)
-    user_id = mapped_column(Integer,ForeignKey("users.id"),unique=True,nullable=False)
-    horario_id = mapped_column(Integer,ForeignKey("horarios.id"),unique=True,nullable=False)
+    user_id = mapped_column(Integer,ForeignKey("users.id"),nullable=False)
+    horario_id = mapped_column(Integer,ForeignKey("horarios.id"),nullable=False)
     criado_em = mapped_column(DateTime, default=datetime.utcnow)
     status = mapped_column(String(20), default="ativo")  

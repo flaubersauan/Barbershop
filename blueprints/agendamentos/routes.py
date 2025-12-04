@@ -10,7 +10,7 @@ from . import agendamento_bp
 def perfil():
     db = Session()
 
-    agendamento = (db.query(Agendamento).options(joinedload(Agendamento.horario))  .filter_by(user_id=current_user.id).first())
+    agendamento = (db.query(Agendamento).options(joinedload(Agendamento.horario))  .filter_by(user_id=current_user.id, status="ativo").first())
 
     db.close()
 
@@ -22,7 +22,7 @@ def perfil():
 def cancelar_agendamento():
     db = Session()
 
-    agendamento = (db.query(Agendamento).options(joinedload(Agendamento.horario)).filter_by(user_id=current_user.id).first())
+    agendamento = (db.query(Agendamento).options(joinedload(Agendamento.horario)).filter_by(user_id=current_user.id, status="ativo").first())
 
     if not agendamento:
         flash("Você não possui agendamento para cancelar.")
@@ -33,7 +33,7 @@ def cancelar_agendamento():
     agendamento.horario.disponivel = True
 
     
-    db.delete(agendamento)
+    agendamento.status = "cancelado"
 
     db.commit()
     db.close()
@@ -57,7 +57,7 @@ def historico():
 def meu_agendamento():
     db = Session()
 
-    agendamento = (db.query(Agendamento).options(joinedload(Agendamento.horario)).filter_by(user_id=current_user.id).first())
+    agendamento = (db.query(Agendamento).options(joinedload(Agendamento.horario)).filter_by(user_id=current_user.id, status="ativo").first())
 
     db.close()
 
