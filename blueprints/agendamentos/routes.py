@@ -31,7 +31,6 @@ def cancelar_agendamento():
 
     
     agendamento.horario.disponivel = True
-
     
     agendamento.status = "cancelado"
 
