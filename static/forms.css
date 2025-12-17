@@ -161,7 +161,7 @@ i{
     font-weight: bold;
     border-radius: 20px;
     text-align: center;
-    
+    max-width: 500px;
 }
 
 .flash.success {

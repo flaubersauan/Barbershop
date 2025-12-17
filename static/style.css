@@ -15,7 +15,7 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
     background: linear-gradient(180deg, #F3EDE3 0%, #EFE7DD 100%);
     color: #3d352e;
-    padding: 28px;
+    padding-top: 30px;
 }
 
 
@@ -34,6 +34,17 @@ html, body {
 
 .titulo{
     color: #4A3728;
+    font-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.dash-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 0;
+    gap: 10px;
 }
 .dashboard-body{
     display: flex;
@@ -52,7 +63,6 @@ html, body {
     font-size: 14px;
     color: rgba(255,255,255,0.9);
 }
-
 
 .user-dashboard-info {
     display: flex;
@@ -210,6 +220,9 @@ html, body {
     background: rgba(106,80,62,0.06);
 }
 
+.dash-header h1{
+    font-size: 60px;
+}
 .nav-dashboard {
     position: fixed;
     right: 28px;
@@ -229,11 +242,9 @@ html, body {
     text-decoration: none;
     font-weight: 600;
     border-radius: 10px;
-    transition: background .12s ease, transform .12s ease;
 }
 .nav-item:hover {
     background: rgba(106,80,62,0.06);
-    transform: translateY(-4px);
 }
 
 .titulo-pagina {
@@ -243,6 +254,45 @@ html, body {
     text-align: center;
     font-weight: 600;
     letter-spacing: 1px;
+}
+
+.card-info .titulo-pagina {
+    margin-bottom: 14px;
+    font-size: 22px;
+}
+
+.info-row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.lista-historico {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lista-historico li {
+    background: #f7f3f0;
+    padding: 12px 16px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #4A3728;
+    font-weight: 600;
+}
+
+.lista-historico li strong {
+    font-weight: 700;
+    color: #6B4F3A;
 }
 
 .card-info {
