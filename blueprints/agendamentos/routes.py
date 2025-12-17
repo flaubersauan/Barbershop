@@ -25,7 +25,6 @@ def cancelar_agendamento():
     agendamento = (db.query(Agendamento).options(joinedload(Agendamento.horario)).filter_by(user_id=current_user.id, status="ativo").first())
 
     if not agendamento:
-        flash("Você não possui agendamento para cancelar.")
         db.close()
         return redirect(url_for("dashboard"))
 
@@ -37,7 +36,7 @@ def cancelar_agendamento():
     db.commit()
     db.close()
 
-    flash("Agendamento cancelado com sucesso!")
+    flash("Agendamento cancelado com sucesso!", 'success')
     return redirect(url_for("dashboard"))
 
 @agendamento_bp.route("/historico")

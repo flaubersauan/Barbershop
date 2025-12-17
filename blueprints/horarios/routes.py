@@ -16,14 +16,14 @@ def agendar(horario_id):
         return redirect(url_for("dashboard"))
 
     if current_user.agendamento:
-        flash("Você já possui um horário agendado!")
+        flash("Você já possui um horário agendado!", 'error')
         db.close()
         return redirect(url_for("dashboard"))
 
 
     for ag in horario.agendamento:
         if ag.status == "ativo":
-            flash("Este horário já foi reservado!")
+            flash("Este horário já foi reservado!", 'error')
             db.close()
             return redirect(url_for("dashboard"))
 
@@ -35,5 +35,5 @@ def agendar(horario_id):
     db.commit()
     db.close()
 
-    flash("Agendamento realizado com sucesso!")
+    flash("Agendamento realizado com sucesso!", 'success')
     return redirect(url_for("dashboard"))

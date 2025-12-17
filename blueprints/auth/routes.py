@@ -14,7 +14,7 @@ def cadastro():
 
         db = Session()
         if db.query(User).filter_by(email=email).first():
-            flash('E-mail já cadastrado!')
+            flash('E-mail já cadastrado!', 'error')
             db.close()
             return redirect(url_for('auth.cadastro'))
 
@@ -23,7 +23,7 @@ def cadastro():
         db.add(novo_user)
         db.commit()
         db.close()
-        flash('Usuário cadastrado com sucesso!')
+        flash('Usuário cadastrado com sucesso!', 'success')
         return redirect(url_for('auth.login'))
 
     return render_template('cadastro.html')
@@ -39,7 +39,7 @@ def login():
         user = db.query(User).filter_by(email=email).first()
 
         if not user or not check_password_hash(user.senha_hash, senha):
-            flash('E-mail ou senha inválidos.')
+            flash('E-mail ou senha inválidos.', 'error')
             db.close()
             return redirect(url_for('auth.login'))
 
@@ -53,5 +53,5 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('Logout realizado com sucesso!')
+    flash('Logout realizado com sucesso!', 'success')
     return redirect(url_for('index'))

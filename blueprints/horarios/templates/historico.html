@@ -2,8 +2,9 @@
 {% block content %}
 
 <div class="centralizar">
-  <h2>Histórico</h2>
-  {% if historico %}
+  <div class="card-info">
+    <h2>Histórico</h2>
+      {% if historico %}
   <ul class="lista-historico">
     {% for ag in historico %}
       <li>
@@ -16,5 +17,7 @@
   <p>Sem histórico de agendamentos.</p>
 {% endif %}
 </div>  
+  </div>
+
 
 {% endblock %}

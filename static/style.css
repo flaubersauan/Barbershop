@@ -96,6 +96,13 @@ html, body {
     gap: 16px;
     grid-template-columns: repeat(1, 1fr);
 }
+.lista-historico{
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(1, 1fr);
+}
 
 .item-horario {
     background: #ffffff;
@@ -251,6 +258,7 @@ html, body {
     gap: 15px;
     color: #4A3728;
     border: 2px solid #E8DCCD;
+    align-items: center;
 }
 
 .texto-vazio {
@@ -287,4 +295,25 @@ html, body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+.flash {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+    border-radius: 20px;
+    text-align: center;
+    border-left: solid rgb(80, 20, 20) 15px;
+}
+
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: #155724;
+}
+
+.flash.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: solid rgb(80, 20, 20) 15px;
 }
